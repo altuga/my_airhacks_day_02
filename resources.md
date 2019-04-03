@@ -11,3 +11,5 @@ System testing is testing conducted on a complete integrated system to evaluate 
 
 
 https://en.wikipedia.org/wiki/Law_of_triviality
+https://stackoverflow.com/users/597657/eng-fouad
+https://tools.ietf.org/html/rfc7231
