@@ -14,6 +14,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+//!!!!!!!!!!!!! Exceptions
 @Stateless
 @Path("flights")
 public class FlightsResource {
@@ -38,6 +39,7 @@ public class FlightsResource {
     public Flight find(@PathParam("id") long id) {
         return this.coordinator.find(id);
     }
+
 
 
     /**

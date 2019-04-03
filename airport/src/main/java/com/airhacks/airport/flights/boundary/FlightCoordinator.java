@@ -23,6 +23,9 @@ public class FlightCoordinator {
     }
 
     public void save(Flight flight) {
+        if (flight != null && flight.number != null && !flight.number.startsWith("lh")) {
+            throw new InvalidFlightException("Only LH are accepted");
+        }
         this.em.persist(flight);
     }
 
