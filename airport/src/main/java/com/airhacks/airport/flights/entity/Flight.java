@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Flight {
     @GeneratedValue
     private long id;
 
+    @Size(min = 3, max = 10, message = "stupid user")
     public String number;
     public int numberOfSeats;
     final static String PREFIX = "com.airhacks.airport.flights.entity.Flight.";

@@ -6,6 +6,7 @@ import java.net.URI;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -48,7 +49,7 @@ public class FlightsResource {
      * @param flight
      */
     @POST
-    public Response save(@Context UriInfo info, Flight flight) {
+    public Response save(@Context UriInfo info, @Valid Flight flight) {
         this.coordinator.save(flight);
         URI uri = info.getAbsolutePathBuilder().
                 path(String.valueOf(flight.getId())).

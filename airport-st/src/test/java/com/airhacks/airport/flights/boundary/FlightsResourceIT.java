@@ -36,7 +36,7 @@ public class FlightsResourceIT {
     public void crud() {
         JsonObject flight = Json.createObjectBuilder().
                 add("numberOfSeats", 13).
-                add("number", "air 13").
+                add("number", "lh 13").
                 build();
         Response response = this.tut.request().post(json(flight));
 
@@ -53,6 +53,29 @@ public class FlightsResourceIT {
         JsonObject createFlight = flightResponse.readEntity(JsonObject.class);
         System.out.println("createFlight = " + createFlight);
     }
+
+    @Test
+    public void createNonLHFlight() {
+        JsonObject flight = Json.createObjectBuilder().
+                add("numberOfSeats", 13).
+                add("number", "air 13").
+                build();
+        Response response = this.tut.request().post(json(flight));
+        assertThat(response.getStatus(), is(400));
+
+    }
+
+    @Test
+    public void createFlightWithTooShortName() {
+        JsonObject flight = Json.createObjectBuilder().
+                add("numberOfSeats", 13).
+                add("number", "lh").
+                build();
+        Response response = this.tut.request().post(json(flight));
+        assertThat(response.getStatus(), is(400));
+
+    }
+
 
 
 }
