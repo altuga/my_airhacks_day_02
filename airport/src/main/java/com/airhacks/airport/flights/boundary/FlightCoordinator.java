@@ -2,36 +2,28 @@
 package com.airhacks.airport.flights.boundary;
 
 import com.airhacks.airport.flights.entity.Flight;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author airhacks.com
  */
-@ApplicationScoped
+@Stateless
 public class FlightCoordinator {
 
-    private ArrayList<Flight> list;
-
-    @PostConstruct
-    public void init() {
-        this.list = new ArrayList<>();
-        this.list.add(new Flight("lh42", 42));
-
-        this.list.add(new Flight("lh 21", 2));
-        this.list.add(new Flight("lh 13", 13));
-    }
-
+    @PersistenceContext
+    EntityManager em;
+    
     public List<Flight> flights() {
-        return this.list;
+        return this.em.createNamedQuery(Flight.findAll, Flight.class).getResultList();
 
     }
 
     public void save(Flight flight) {
-        this.list.add(flight);
+        this.em.persist(flight);
     }
 
 
