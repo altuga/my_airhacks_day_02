@@ -1,0 +1,24 @@
+node {
+   stage('Build') {
+         sh "cd airport && mvn -DskipTests package"
+   }
+   stage('Build System Tests') {
+         sh "cd airport-st && mvn -DskipTests package"
+   }
+   stage('Unit Test') {
+         sh "cd airport && mvn test"
+   }
+   stage('Build Server Image') {
+         sh "echo building server"
+   }
+   stage('Run Server') {
+         sh "echo running server"
+   }
+   stage('Run System Tests') {
+         sh "cd airport-st && mvn failsafe:integration-test failsafe:verify"
+   }
+   stage('Promote'){
+       sh "echo tag image"
+   }
+
+}
