@@ -26,5 +26,8 @@ public class FlightCoordinator {
         this.em.persist(flight);
     }
 
+    public Flight find(long id) {
+        return this.em.find(Flight.class, id);
+    }
 
 }

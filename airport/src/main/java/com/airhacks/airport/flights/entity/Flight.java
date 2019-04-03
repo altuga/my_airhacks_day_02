@@ -31,7 +31,15 @@ public class Flight {
         this.numberOfSeats = numberOfSeats;
     }
 
+    /**
+     * This is a parameterless constructor
+     */
     public Flight() {
+        super();
+    }
+
+    public long getId() {
+        return id;
     }
 
 

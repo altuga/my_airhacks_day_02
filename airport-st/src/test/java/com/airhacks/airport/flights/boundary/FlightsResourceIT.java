@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Assert;
+import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,11 +39,19 @@ public class FlightsResourceIT {
                 add("number", "air 13").
                 build();
         Response response = this.tut.request().post(json(flight));
-        Assert.assertThat(response.getStatus(), is(204));
+
+        String location = response.getHeaderString("Location");
+        System.out.println("location = " + location);
+        Assert.assertThat(response.getStatus(), is(201));
 
         JsonArray flights = this.tut.request(MediaType.APPLICATION_JSON).
                 get(JsonArray.class);
         System.out.println("flights = " + flights);
+
+        Response flightResponse = this.client.target(location).request().get();
+        assertThat(flightResponse.getStatus(), is(200));
+        JsonObject createFlight = flightResponse.readEntity(JsonObject.class);
+        System.out.println("createFlight = " + createFlight);
     }
 
 
