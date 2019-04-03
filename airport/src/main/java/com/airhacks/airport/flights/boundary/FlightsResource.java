@@ -17,7 +17,7 @@ import javax.ws.rs.core.UriInfo;
 
 //!!!!!!!!!!!!! Exceptions
 @Stateless
-@Path("flight")
+@Path("flights")
 public class FlightsResource {
 
     //members are starting here

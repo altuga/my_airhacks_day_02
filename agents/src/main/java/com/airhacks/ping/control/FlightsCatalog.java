@@ -10,6 +10,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.RegistryType;
 
 /**
@@ -31,6 +32,7 @@ public class FlightsCatalog {
         this.tut = this.client.target("http://localhost:8080/airport/resources/flights");
     }
 
+    @Metered
     public JsonArray allFlights() {
         Response response = this.tut.request(MediaType.APPLICATION_JSON).get();
         int status = response.getStatus();

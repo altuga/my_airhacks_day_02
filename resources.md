@@ -33,3 +33,4 @@ https://www.eclipse.org/jgit/
 http://connectorz.adam-bien.com
 
 https://en.wikipedia.org/wiki/Coupling_(computer_programming)
+
