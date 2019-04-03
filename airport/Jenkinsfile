@@ -1,5 +1,6 @@
 node {
    stage('Build') {
+         sh "pwd"
          sh "cd airport/airport && mvn -DskipTests package"
    }
    stage('Build System Tests') {
