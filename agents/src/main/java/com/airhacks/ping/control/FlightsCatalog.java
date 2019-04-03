@@ -9,6 +9,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.Bulkhead;
 import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.RegistryType;
@@ -33,6 +34,7 @@ public class FlightsCatalog {
     }
 
     @Metered
+    @Bulkhead(2)
     public JsonArray allFlights() {
         Response response = this.tut.request(MediaType.APPLICATION_JSON).get();
         int status = response.getStatus();
