@@ -34,3 +34,6 @@ http://connectorz.adam-bien.com
 
 https://en.wikipedia.org/wiki/Coupling_(computer_programming)
 
+http://archive.adam-bien.com
+
+http://cxf.apache.org/docs/jax-rs-client-api.html
