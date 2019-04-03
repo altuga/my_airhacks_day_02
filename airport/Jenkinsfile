@@ -1,9 +1,9 @@
 node {
    stage('Build') {
-         sh "cd airport && mvn -DskipTests package"
+         sh "cd ./airport && mvn -DskipTests package"
    }
    stage('Build System Tests') {
-         sh "cd airport-st && mvn -DskipTests package"
+         sh "cd ./airport-st && mvn -DskipTests package"
    }
    stage('Unit Test') {
          sh "cd airport && mvn test"
